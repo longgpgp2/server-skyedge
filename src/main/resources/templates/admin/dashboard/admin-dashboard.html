@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+  <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+  <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+  <div id="content" class="bg-w p-3">
+    <div class="container dashboard-container mt-4">
+      <div class="row">
+        <!-- Customer -->
+        <div class="col-sm">
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-card-content">
+                <div class="quantity">
+                  <h2 class="card-title" th:text="${numOfUsers}">17</h2>
+                  <p class="card-text">Customer</p>
+                </div>
+                <div class="icon-container">
+                  <h2 class="fa fa-users" aria-hidden="true"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Products -->
+        <div class="col-sm">
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-card-content">
+                <div class="quantity">
+                  <h2 class="card-title" th:text="${numOfProducts}">39</h2>
+                  <p class="card-text">Products</p>
+                </div>
+                <div class="icon-container">
+                  <h2 class="fa fa-cart-plus" aria-hidden="true"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Orders -->
+        <div class="col-sm">
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-card-content">
+                <div class="quantity">
+                  <h2 class="card-title" th:text="${orders.size()}">36</h2>
+                  <p class="card-text">Orders</p>
+                </div>
+                <div class="icon-container">
+                  <h2 class="fa fa-archive" aria-hidden="true"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Income -->
+        <div class="col-sm">
+          <div class="card">
+            <div class="card-body">
+              <div class="custom-card-content">
+                <div class="quantity">
+                  <h2 class="card-title" th:text="'$' + ${totalRevenue}">$38K</h2>
+                  <p class="card-text">Income</p>
+                </div>
+                <div class="icon-container">
+                  <h2 class="fa fa-credit-card" aria-hidden="true"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Purchase & Activity -->
+    <div id="recent" class="container">
+      <div class="row gap-3">
+        <!-- Recent Purchase -->
+        <div id="purchase" class="col bg-white p-3 rounded-3 mb-4">
+          <h3>Recent Purchases</h3>
+          <table class="table table-hover ">
+            <thead>
+              <tr>
+                <th scope="col">Order No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody class="purchase-table" th:each="order: ${orders}">
+              <tr>
+                <td th:text="${order.orderId}">78959</td>
+                <td th:text="${order.customerName}">Albert Flores</td>
+                <td th:text="'$' + ${order.cost}">$1345</td>
+                <td th:text="${order.date}">Mar 26, 2024</td>
+                <td class="status"><span class="status-btn status-pending" th:if="${order.status}==PENDING"
+                    th:text="${order.status}">PENDING</span>
+                  <span class="status-btn status-success" th:if="${order.status}==APPROVED"
+                    th:text="${order.status}">APPROVED</span>
+                  <span class="status-btn status-failed" th:if="${order.status}==REJECTED"
+                    th:text="${order.status}">REJECTED</span>
+                </td>
+
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-outline-success">Show All</button>
+        </div>
+        <!-- Recent activity -->
+        <div id="activity" class="col bg-white p-3 rounded-3  mb-4">
+          <h3>Recent Admin Activities</h3>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Activity</th>
+                <!-- <th scope="col">Date</th> -->
+              </tr>
+            </thead>
+            <tbody th:each="history : ${productHistory}">
+              <tr class="acticity-container">
+                <td class="d-flex align-items-center">
+                  <!-- <div class="admin-logo d-flex align-items-center">
+                    <img class="avt" width="30px" height="30px" th:src="@{'/images/' + ${history[2]}}"  alt="Product Image">
+                  </div> -->
+                  <p class="admin-name text-success mb-0" th:text="${history[0]}">Cong</p>
+                  <p class="activity mb-0" th:text="${history[1]}"> has deleted a voucher from List Voucher</p>
+                </td>
+                <!-- <td>Mar 26, 2024</td> -->
+              </tr>
+            </tbody>
+          </table>
+          <button type="button" class="btn btn-outline-success">Show All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

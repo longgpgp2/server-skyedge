@@ -1,0 +1,17 @@
+/* Banner */
+#banner-carousel .carousel-indicators button {
+    margin-top: -50px;
+    background-color: #59ab6e;
+  }
+
+#banner-carousel .carousel-control-next i,
+#banner-carousel .carousel-control-prev i {
+  color: #59ab6e !important;
+  font-size: 2.8em !important;
+}
+
+.card-img-top {
+  height: 18em;
+  width: 1em;
+  object-fit: cover;
+}

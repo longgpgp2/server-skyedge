@@ -1,0 +1,36 @@
+.product-overlay ul li {
+    display: none;
+}
+
+.card:hover .product-overlay ul li {
+    display: block;
+}
+
+.heart-selected {
+    color: white !important;
+}
+
+footer #footer, footer #copyright {
+    font-weight: bold !important;
+}
+
+.image-container {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.carousel-control-prev, .carousel-control-next {
+    background-color: #76c893 !important;
+    color: white !important;
+    border-radius: 10px;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: transparent !important;
+}
+
+.icon-item {
+    margin-right: 10px;
+}

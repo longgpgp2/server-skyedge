@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+    <div id="content" class="bg-w p-3">
+        <div class="order-popup">
+            <div class="order-popup-content d-flex ">
+                <div class="col-7 d-flex flex-column left-content ">
+                    <div class="p-4 bg-white h-100 rounded">
+                        <div class="d-flex justify-content-start">
+                            <span class="fw-bold fs-4 text-start mb-4"
+                                th:text="'Order Details #' + ${order.orderId}"></span>
+                        </div>
+                        <div class="cart-list border border-2 border-secondary border-start-0 border-end-0">
+                            <div class=" d-flex flex-row p-2 rounded justify-content-between align-items-center"
+                                th:each="product: ${products}">
+                                <div class="d-flex w-100 align-items-center justify-content-between">
+                                    <div class="item-info text-start d-flex gap-2">
+                                        <div class=" d-inline-block">
+                                            <img loading="lazy" th:src="@{'/images/' + ${product.product.imageFileName}}"
+                                                class=" item-img rounded-3" width="100" height="100">
+                                        </div>
+                                        <div class="d-flex flex-column">
+                                            <p class="item-name fw-bold" th:text="${product.product.name}"></p>
+                                            <p id="var-value" th:text="'Type: ' + ${product.product.category}"></p>
+                                            <p id="var-value" th:text="'Quantity: ' + ${product.quantity}"></p>
+                                        </div>
+                                    </div>
+                                    <div class="">
+                                        <p class="fw-bold fs-6" th:text="'$' + ${product.product.price*product.quantity}">
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-50 float-end d-flex p-2 align-items-center justify-content-between">
+                            <div class="d-flex flex-column">
+                                <!-- <p class="text-start">Total product cost</p> -->
+                                <p class="text-start">Discount</p>
+                                <p class="text-start">Shipping</p>
+                                <p class="text-start fw-bold">Total cost</p>
+                            </div>
+                            <div class="d-flex flex-column">        
+                                <!-- <p class="text-end" th:text="'$' + ${order.discount}"></p> -->
+                                <p class="text-end" th:text="${order.discount} +'%'"></p>
+                                <p class="text-end">$0,0</p>
+                                <p class="text-end fw-bold" th:text="'$' + ${order.cost}"></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-5 right-content px-3 d-flex flex-column gap-4 ">
+                    <div class="bg-white h-100 rounded p-3">
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4 text-start mb-3">Customer Info</span>
+                            <div class="d-flex gap-5 mb-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" >User name: </p>
+                                        <p class="text-start" >Email: </p>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" th:text="${order.customerName}"></p>
+                                        <p class="text-start" th:text="${order.email} "></p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4 text-start mb-3">Delivery Details</span>
+                            <div class="d-flex gap-5 mb-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" >Address: </p>
+                                        <p class="text-start" >Phone: </p>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" th:text="${order.address}"></p>
+                                        <p class="text-start text-primary" th:text="${order.phone} "></p>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <span class="fw-bold fs-4 text-start mb-3">Payment Info</span>
+                            <div class="d-flex gap-5 mb-2 align-items-center">
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" >Payment Method: </p>
+                                        <p class="text-start" >Transaction No: </p>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <p class="text-start" th:text="'Cast'"></p>
+                                        <p class="text-start" th:text="${order.orderId} "></p>
+                                    </div>
+                            </div>
+                        </div>
+                        <a class="btn px-3 py-2 btn-outline-secondary rounded-3" th:href="@{/admin/order}">Go back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

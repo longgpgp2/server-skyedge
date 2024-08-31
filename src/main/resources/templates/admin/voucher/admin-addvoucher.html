@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+    <div id="content" class="bg-w p-3 py-5">
+        <!-- Form -->
+        <div class="container bg-white p-4 rounded-3">
+            <form id="addNewForm" method="post" enctype="multipart/form-data" th:action="@{/admin/voucher/add}"
+                th:object="${voucherDto}" class="d-flex align-items-center bg-w rounded-3" th:fragment="addvoucher">
+                <!-- Left content -->
+                <div class="row p-4">
+                    <h2 class="col-12 fw-bold color-web-text">Add New Voucher</h2>
+                    <div class="voucher-data">
+                        <label for="category">Icon:</label>
+                        <div>
+                            <select class="form-select mt-2" id="category" required th:field="${voucherDto.icon}">
+                                <option value="fas fa-truck"> Free shipping</option>
+                                <option value="fas fa-gift">Gift</option>
+                                <option value="fas fa-percentage">Discount</option>
+                                <option value="fas fa-holly-berry">Holiday</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Voucher Code -->
+                    <div class="voucher-data">
+                        <label for="code">Voucher code:</label>
+                        <input type="text" class="form-control" id="code" placeholder="Enter voucher code" required
+                            th:field="${voucherDto.code}" rows="4"></input>
+                    </div>
+                    <!-- Voucher Name -->
+                    <div class="voucher-data">
+                        <label for="voucherName">Voucher name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter voucher name" required
+                            th:field="${voucherDto.name}">
+                        <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger"
+                            th:errors="${voucherDto.name}"></p>
+                    </div>
+
+
+                    <!-- Country of Manufacturer -->
+                    <div class="voucher-data">
+                        <label for="discount">Discount:</label>
+                        <input type="text" class="form-control" id="discount" placeholder="Enter discount" required
+                            th:field="${voucherDto.discount}">
+                    </div>
+
+                    <div class="voucher-data">
+                        <label for="category">Type:</label>
+                        <div>
+                            <select class="form-select mt-2" id="category" required th:field="${voucherDto.type}">
+                                <option value="Free shipping">Free shipping</option>
+                                <option value="Gift">Gift</option>
+                                <option value="Discount">Discount</option>
+                                <option value="Holiday">Holiday</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Stock -->
+                    <div class="voucher-data">
+                        <label for="stock">Stock:</label>
+                        <input type="number" step="1" class="form-control" id="stock" placeholder="Enter voucher stock"
+                            required th:field="${voucherDto.stock}">
+                    </div>
+                    <!-- Update & Delete buttons -->
+                    <div class="buttonAddGrp">
+                        <button type="submit" class="btn-add btn btn-outline-success" th:href="@{/admin/voucher}">
+                            <i class="fa fa-plus-circle"></i>
+                            <span>Add New</span>
+                        </button>
+                        <a class="btn btn-outline-secondary text-decoration-none" th:href="@{/admin/voucher}">
+                            <i class="fa fa-ban"></i>
+                            <span>Cancel</span>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

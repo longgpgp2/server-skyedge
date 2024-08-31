@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="./displays/MainDisplay/main.css">
+    <link rel="stylesheet" href="./pages/AboutUs/about-us.css">
+    <link rel="stylesheet" href="./assets/css/typo.css">
+    <link rel="stylesheet" href="./assets/css/colors.css">
+    <link rel="stylesheet" th:href="@{/pages/Subscribers/subscribers.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav id="nav-top" class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block"
+        th:replace="~{main/fragments/topnav :: topnav}"></nav>
+
+    <!-- Header -->
+    <nav id="header" class="navbar navbar-expand-lg navbar-light shadow"
+        th:replace="~{main/fragments/header :: header}"></nav>
+
+    <form id="content" class="bg-w p-3" method="post" th:action="@{/profile}" th:object="${user}">
+        <div class="container profile-container p-4">
+            <div class="fs-1 mb-4 fw-bold">Edit User Profile</div>
+            <div class="d-flex gap-5">
+                <div class="card w-50 h-25">
+                    <img class="card-img-top" th:src="@{/assets/Login_background.png}" alt="Card image" height="200"
+                        width="300">
+                    <img class="img-profile img-thumbnail position-absolute" th:src="@{/assets/images/Huan.png}"
+                        alt="Card image" width="100" height="100">
+                    <div class="card-body mt-5">
+                        <input readonly type="hidden" th:field="${user.userId}" />
+                        <h4 class="card-title">Your Photo</h4>
+                        <p class="card-text fs-7 text-secondary">This will be displayed on your profile</p>
+                        <div class="gap-3">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card w-50 h-25 p-4">
+                    <span class="fs-4">Personal Information</span>
+                    <form>
+                        <div class="mb-3 mt-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required th:field="${user.name}"
+                                placeholder="Enter your full name" name="name">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" required th:field="${user.email}" id="email"
+                                placeholder="Enter your full email" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Mobile number</label>
+                            <input type="password" class="form-control" th:field="${user.phone}" id="phone"
+                                placeholder="Enter your Phone" name="pswd">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </fo>
+        <script th:replace="~{admin/fragments/script :: script}"></script>
+        <script src="./displays/MainDisplay/main.js"></script>
+</body>
+<!-- Start Footer -->
+<footer class="bg-dark">
+    <div id="footer" class="container" th:replace="~{main/fragments/footer :: footer}"></div>
+
+    <!-- Copyright -->
+    <div id="copyright" class="bg-black copy-right py-3 w-100" th:replace="~{main/fragments/copyright :: copyright}">
+    </div>
+</footer>
+<!-- Close Footer -->
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+    <div id="content" class="bg-w p-3">
+        <div class="container voucher-container p-4">
+            <!-- Top bar -->
+            <div class="row d-flex align-items-center rounded-3 p-3 mb-4 bg-white">
+                <div class="col-12 d-flex align-items-center">
+                    <!-- Management -->
+                    <div class="col-4 d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-ticket fa-2x mb-4"></i>
+                        <div class="d-flex flex-column ml-5">
+                            <span class="fs-2">Voucher Management</span>
+                            <span id="total-voucher" class="text-secondary"><span th:text="${voucherCount}"></span>
+                                vouchers</span>
+                        </div>
+                    </div>
+                    <!-- Search -->
+                    <form th:action="'/admin/voucher/search'" method="GET" class="col-6">
+                        <div class="search-box d-flex align-items-center bg-w rounded-3 px-2 mx-4 gap-3">
+                            <i class="fas fa-search icon mx-1"></i>
+                            <input class="bg-w rounded-3 h-4 fs-6 w-100 border-0 outline-none" type="search"
+                                name="query" placeholder="Search">
+                        </div>
+                    </form>
+                    <!-- Add Voucher Button -->
+                    <div class="col-2 px-4">
+                        <a th:href="@{/admin/voucher/add}" id="add-voucher-button"
+                            class="rounded-pill text-white bg-success py-2 px-3 d-flex align-items-center gap-2 border-0 outline-0 text-decoration-none">
+                            <i class="fas fa-plus-circle"></i>
+                            <span class="mt-0">Add voucher</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- List Voucher -->
+            <div class="list-voucher row gap-2">
+                <div th:each="voucher : ${vouchers}"
+                    class="voucher-box rounded-3 bg-white p-3 d-flex align-items-center gap-5">
+                    <input id="checkbox-voucher-input" type="checkbox" onchange="displayVoucherButton(this)">
+                    <span th:class="'fs-3 ' + ${voucher.icon}"></span>
+                    <table class="voucher-info w-100">
+                        <thead class="fs-075 text-secondary">
+                            <tr>
+                                <th>Voucher code</th>
+                                <th>Voucher Name</th>
+                                <th>Discount</th>
+                                <th>Type</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tr-voucher">
+                                <td th:text="${voucher.code}"></td>
+                                <td th:text="${voucher.name}"></td>
+                                <td th:text="${voucher.discount} + '%'"></td>
+                                <td th:text="${voucher.type}"></td>
+                                <td th:text="${voucher.stock}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Các nút Update và Delete -->
+                    <div class="buttonGrp d-none">
+                        <a th:href="@{/admin/voucher/edit(id=${voucher.id})}"
+                            class="btn btn-outline-primary d-flex align-items-center gap-1">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Edit</span>
+                        </a>
+                        <a th:href="@{/admin/voucher/delete(id=${voucher.id})}"
+                            class="btn btn-outline-danger d-flex align-items-center text-decoration-none gap-1"
+                            onclick="return confirm('Are you sure?')">
+                            <i class="fa-regular fa-trash-can"></i>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <!-- <ul class="pagination justify-content-end" style="margin: 20px 0;">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul> -->
+        </div>
+    </div>
+    <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

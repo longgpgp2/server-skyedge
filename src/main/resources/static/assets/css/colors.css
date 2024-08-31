@@ -1,0 +1,55 @@
+/* Text colors */
+.text-warning {
+    color: #ede861 !important;
+}
+
+.text-muted {
+    color: #bcbcbc !important;
+}
+
+.text-success {
+    color: #59ab6e !important;
+}
+
+.text-light {
+    color: #cfd6e1 !important;
+}
+
+footer a {
+    color: #dcdde1;
+}
+
+/* Background colors */
+.bg-dark {
+    background-color: #212934 !important;
+}
+
+.bg-light {
+    background-color: #e9eef5 !important;
+}
+
+.bg-black {
+    background-color: #1d242d !important;
+}
+
+.bg-success {
+    background-color: #59ab6e !important;
+}
+
+.bg-footer{
+    background-color: rgb(110, 170, 243);
+}
+
+/* Buttons */
+.btn { color: white; }
+
+.btn-success {
+    background-color: #59ab6e !important;
+    border-color: #56ae6c !important;
+}
+
+.btn-success:hover {
+    background-color: #52b69a !important;
+    border-color: #52b69a !important;
+    color: white !important;
+}

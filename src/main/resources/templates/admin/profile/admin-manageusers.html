@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+    <div id="content" class="bg-w p-3">
+        <div class="container product-container p-4">
+            <!-- Top bar -->
+            <div class="row rounded-3 p-3 mb-4 bg-white">
+                <!-- Management -->
+                <div class="col-4 d-flex align-items-center gap-2">
+                    <i class="fa-solid fas fa-user fa-2x mb-4"></i>
+                    <div class="d-flex flex-column ml-5">
+                        <span class="fs-2">Users Management</span>
+                        <span id="total-product" class="text-secondary"><span th:text="${users.size()}"></span>
+                            users</span>
+                    </div>
+                </div>
+                <!-- Search -->
+                <form th:action="'/admin/users/search'" method="GET" class="col-8 d-flex align-items-center">
+                    <div class="search-box w-100 d-flex align-items-center bg-w rounded-3 px-2 mx-4 gap-3">
+                        <i class="fas fa-search icon mx-1"></i>
+                        <input class="bg-w rounded-3 h-4 fs-6 w-100 border-0 outline-none" type="search" name="query"
+                            placeholder="Search">
+                    </div>
+                </form>
+            </div>
+            <!-- List Product -->
+            <div class="list-product row gap-2">
+                <div th:each="user : ${users}"
+                    class="product-box rounded-3 bg-white p-3 d-flex align-items-center gap-5">
+                    <input id="checkbox-product-input" type="checkbox" onchange="displayProductButton(this)">
+                    <!-- <img width="50" height="50" style="border-radius: 50%;"
+                        th:src="@{'/images/' + ${product.imageFileName}}" alt="Product Image"> -->
+                    <table class="product-info justify-content-between w-100">
+                        <thead class="fs-075 text-secondary">
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tr-product">
+                                <td th:text="${user.userId}"></td>
+                                <td th:text="${user.username}"></td>
+                                <td th:text="${user.authorities.iterator().next().getAuthority()}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Các nút Update và Delete -->
+                    <div class="buttonGrp d-none">
+                        <a class="btn btn-outline-primary d-flex align-items-center gap-1"
+                            th:href="@{/admin/users/edit(id=${user.userId})}">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <span>Edit</span>
+                        </a>
+                        <a class="btn btn-outline-danger d-flex align-items-center text-decoration-none gap-1"
+                            th:href="@{/admin/users/lock(id=${user.userId})}">
+                            <i class="fa-regular fa-trash-can"></i>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <!-- <ul class="pagination justify-content-end" style="margin: 20px 0;">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul> -->
+        </div>
+    </div>
+    <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

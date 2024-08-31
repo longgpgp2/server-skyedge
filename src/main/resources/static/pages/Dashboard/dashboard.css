@@ -1,0 +1,59 @@
+/* ====== Start Dashboard ====== */
+.dashboard-container .card:hover {
+    transform: scale(1.1);
+    background-color: var(--primary-color);
+    color: var(--content-color) !important;
+}
+.dashboard-container .custom-card-content {
+    display: flex;
+    align-items: center;
+}
+.dashboard-container .card-title {
+    margin-right: 10px;
+}
+.icon-container {
+    margin-left: auto;
+}
+.status-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1;
+    width: 100%;
+}
+.status-pending {
+    color: #FFFFFF;
+    background-color: #FFC107;
+}
+.status-failed {
+    color: #FFFFFF;
+    background-color: #DC3545;
+}
+.status-success {
+    color: #FFFFFF;
+    background-color: #37fc48;
+}
+.status-completed {
+    color: #FFFFFF;
+    background-color: #03aa4e;
+}
+#recent {
+    padding-top: 50px;
+}
+#activity img {
+    margin-right: 5px;
+    border-radius: 50%;
+}
+.admin-name {
+    padding-left: 5px;
+}
+.activity {
+    padding-left: 5px;
+}
+.dashboard-container .avt{
+    height: 30px;
+    width: 30px;
+}
+/* ====== End Dashboard ====== */

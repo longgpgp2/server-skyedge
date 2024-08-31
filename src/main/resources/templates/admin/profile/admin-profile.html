@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+    <form id="content" class="bg-w p-3" method="post" th:action="@{/admin/users/edit}" th:object="${user}">
+        <div class="container profile-container p-4">
+            <div class="fs-1 mb-4 fw-bold">Edit User Profile</div>
+            <div class="d-flex gap-5">
+                <div class="card w-50 h-25">
+                    <img class="card-img-top" th:src="@{/assets/Login_background.png}" alt="Card image" height="200"
+                        width="300">
+                    <img class="img-profile img-thumbnail position-absolute" th:src="@{/assets/images/Huan.png}"
+                        alt="Card image" width="100" height="100">
+                    <div class="card-body mt-5">
+                        <input readonly type="hidden" th:field="${user.userId}" />
+                        <h4 class="card-title">Your Photo</h4>
+                        <p class="card-text fs-7 text-secondary">This will be displayed on your profile</p>
+                        <div class="gap-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="card w-50 h-25 p-4">
+                    <span class="fs-4">Personal Information</span>
+                    <form>
+                        <div class="mb-3 mt-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required th:field="${user.name}"
+                                placeholder="Enter your full name" name="name">
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" required th:field="${user.email}" id="email"
+                                placeholder="Enter your full email" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Mobile number</label>
+                            <input type="password" class="form-control" th:field="${user.phone}" id="phone"
+                                placeholder="Enter your Phone" name="pswd">
+                        </div>
+                        <div class="mb-3">
+                            <label for="role">Role:</label>
+                            <div>
+                                <select class="form-select mt-2" id="authority" name="authority">
+                                    <option th:value="USER" th:selected="${authority == 'USER'}">User</option>
+                                    <option th:value="ADMIN" th:selected="${authority == 'ADMIN'}">Admin</option>
+                                    <option th:value="SUPERADMIN" th:selected="${authority == 'SUPERADMIN'}">Super Admin
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </fo>
+        <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

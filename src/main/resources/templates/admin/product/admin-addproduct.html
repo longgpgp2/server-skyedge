@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+    <div id="content" class="bg-w p-3 py-5">
+        <!-- Form -->
+        <div class="container bg-white p-4 rounded-3">
+            <form id="addNewForm" method="post" enctype="multipart/form-data" th:action="@{/admin/product/add}"
+                th:object="${productDto}" class="d-flex align-items-center bg-w rounded-3" th:fragment="addproduct">
+                <!-- Left content -->
+                <div class="row p-4">
+                    <h2 class="col-12 fw-bold color-web-text">Add New Product</h2>
+                    <div class="col-6 left-content">
+                        <div class="product-data">
+                            <label>Product Images:</label>
+                            <div>
+                                <input type="file" class="form-control" name="imageFile" accept="image/*" required
+                                    th:field="${productDto.imageFile}">
+                                <p th:if="${#fields.hasErrors('imageFile')}" th:errorclass="text-danger"
+                                    th:errors="${productDto.imageFile}"></p>
+                            </div>
+                        </div>
+                        <!-- Product Name -->
+                        <div class="product-data">
+                            <label for="productName">Product name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter product name" required
+                                th:field="${productDto.name}">
+                            <p th:if="${#fields.hasErrors('name')}" th:errorclass="text-danger"
+                                th:errors="${productDto.name}"></p>
+                        </div>
+
+                        <!-- Product Description -->
+                        <div class="product-data">
+                            <label for="description">Product description:</label>
+                            <textarea type="text" class="form-control" id="description"
+                                placeholder="Enter product description" required th:field="${productDto.description}"
+                                rows="4"></textarea>
+                            <p th:if="${#fields.hasErrors('description')}" th:errorclass="text-danger"
+                                th:errors="${productDto.description}"></p>
+                        </div>
+
+                        <!-- Country of Manufacturer -->
+                        <div class="product-data">
+                            <label for="country">Country of manufacturer:</label>
+                            <input type="text" class="form-control" id="country"
+                                placeholder="Enter country of manufacturer" required th:field="${productDto.country}">
+                            <p th:if="${#fields.hasErrors('country')}" th:errorclass="text-danger"
+                                th:errors="${productDto.country}"></p>
+                        </div>
+
+                        <!-- Manufacturer & Importer -->
+                        <div class="product-data">
+                            <label for="manufacturer">Manufacturer & Importer:</label>
+                            <input type="text" class="form-control" id="manufacturer"
+                                placeholder="Enter manufacturer & importer" required
+                                th:field="${productDto.manufacturer}">
+                            <p th:if="${#fields.hasErrors('manufacturer')}" th:errorclass="text-danger"
+                                th:errors="${productDto.manufacturer}"></p>
+                        </div>
+                    </div>
+
+                    <!-- Right content -->
+                    <div class="col-6 right-content">
+                        <!-- Category -->
+                        <div class="product-data">
+                            <label for="category">Category:</label>
+                            <div>
+                                <select class="form-select mt-2" id="category" required
+                                    th:field="${productDto.category}">
+                                    <option value="Luxury">Luxury</option>
+                                    <option value="Trending">Trending</option>
+                                    <option value="Men's glasses">Men's glasses</option>
+                                    <option value="Women's glasses">Women's glasses</option>
+                                    <option value="Sunglasses">Sunglasses</option>
+                                    <option value="Accessories">Accessories</option>
+                                    <option value="Eyeglass Frames">Eyeglass Frames</option>
+                                </select>
+
+                                <p th:if="${#fields.hasErrors('category')}" th:errorclass="text-danger"
+                                    th:errors="${productDto.category}"></p>
+                            </div>
+                        </div>
+
+                        <!-- Base pricing -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="price">Base pricing:</label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="price"
+                                    placeholder="Enter base pricing" required th:field="${productDto.price}">
+                                <p th:if="${#fields.hasErrors('price')}" th:errorclass="text-danger"
+                                    th:errors="${productDto.price}"></p>
+                            </div>
+
+                            <!-- Discount -->
+                            <div>
+                                <label for="discount">Discount:</label>
+                                <input type="number" min="0" class="form-control" id="discount"
+                                    placeholder="Enter discount for this product" required
+                                    th:field="${productDto.discount}">
+                            </div>
+                        </div>
+
+                        <!-- Frame -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="frameFront">Frame Front:</label>
+                                <input type="text" class="form-control" id="frameFront" placeholder="Enter frame front"
+                                    required th:field="${productDto.front}">
+                            </div>
+                            <div>
+                                <label for="frameSide">Frame Side:</label>
+                                <input type="text" class="form-control" id="frameSide" placeholder="Enter frame side"
+                                    required th:field="${productDto.side}">
+                            </div>
+                        </div>
+
+                        <!-- Lens -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="lensWidth">Lens Width:</label>
+                                <input type="text" class="form-control" id="lensWidth" placeholder="Enter lens width"
+                                    required th:field="${productDto.width}">
+                            </div>
+                            <div>
+                                <label for="lensHeight">Lens Height:</label>
+                                <input type="text" class="form-control" id="lensHeight" placeholder="Enter lens height"
+                                    required th:field="${productDto.height}">
+                            </div>
+                        </div>
+
+                        <!-- Stock -->
+                        <div class="product-data">
+                            <label for="stock">Stock:</label>
+                            <input type="text" class="form-control" id="stock" placeholder="Enter product stock"
+                                required th:field="${productDto.stock}">
+                        </div>
+
+                        <!-- Update & Delete buttons -->
+                        <div class="buttonGrp">
+                            <button type="submit" class="btn-add btn btn-outline-success" th:href="@{/admin/product}">
+                                <i class="fa fa-plus-circle"></i>
+                                <span>Add New</span>
+                            </button>
+                            <a class="btn btn-outline-secondary text-decoration-none" th:href="@{/admin/product}">
+                                <i class="fa fa-ban"></i>
+                                <span>Cancel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

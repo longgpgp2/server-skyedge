@@ -1,0 +1,35 @@
+<div id="navbar" th:fragment="navbar">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg ">
+        <div class="container-fluid">
+            <!-- Page Title -->
+            <h2 id="page-title" class="color-web mx-5 my-1"></h2>
+            <!-- Account and Notification -->
+            <div class="right-navbar d-flex align-items-center mx-5 gap-4">
+                <div class="notification" role="button">
+                    <i class="fa fa-bell fs-5 my-2"></i>
+                    <!--<span class="number-notification position-absolute rounded-circle bg-danger text-white fs-065">23</span>  -->
+                </div>
+                <div class="admin-profile dropdown">
+                    <div class="user d-flex align-items-center dropdown-toggle gap-2" role="button"
+                        data-bs-toggle="dropdown">
+                        <img class="rounded-circle" th:src="@{/assets/images/Huan.png}" alt="Avatar" width="30px"
+                            height="30px">
+                        <p class="mb-0">Admin</p>
+                    </div>
+                    <ul class="dropdown-menu p-2">
+                        <li class="d-flex align-items-center load-page" role="button"
+                            onclick="loadPage('admin-profile')">
+                            <i class="fas fa-user"></i>
+                            <a href="/profile" class="dropdown-item">Profile</a>
+                        </li>
+                        <li class="d-flex align-items-center load-page" role="button" onclick="loadPage('login.html')">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

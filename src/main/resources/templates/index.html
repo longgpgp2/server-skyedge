@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>SkyEdge</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./displays/MainDisplay/main.css">
+    <link rel="stylesheet" href="./pages/Home/home.css">
+    <link rel="stylesheet" href="./assets/css/typo.css">
+    <link rel="stylesheet" href="./assets/css/colors.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Nav Top -->
+    <nav id="nav-top" class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block"
+        th:replace="~{main/fragments/topnav :: topnav}"></nav>
+
+    <!-- Header -->
+    <nav id="header" class="navbar navbar-expand-lg navbar-light shadow"
+        th:replace="~{main/fragments/header :: header}"></nav>
+
+    <!-- Start Banner -->
+    <div id="banner-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button data-bs-target="#banner-carousel" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#banner-carousel" data-bs-slide-to="1"></button>
+            <button data-bs-target="#banner-carousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <!-- Banner 1 -->
+            <div class="carousel-item active">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/images/category_img.jpg" alt="">
+                        </div>
+
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left align-self-center">
+                                <h1 class="h1 text-success">SkyEdge</h1>
+                                <h3 class="h3">Just an amateur website made by students</h3>
+                                <p>
+                                    Welcome to SkyEdge. As a project crafted by students, our site embodies the spirit
+                                    of innovation and learning. Explore our website where every click is a step towards
+                                    excellence.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner 2 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/images/category_img.jpg" alt="">
+                        </div>
+
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">SkyEdge</h1>
+                                <h3 class="h3">See the World in Style</h3>
+                                <p>
+                                    Step into sophistication with our curated eyewear range. From timeless classics to
+                                    modern designs, find clarity and elegance in every frame. Shop our featured
+                                    collection now!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner 3 -->
+            <div class="carousel-item">
+                <div class="container">
+                    <div class="row p-5">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
+                            <img class="img-fluid" src="./assets/images/category_img.jpg" alt="">
+                        </div>
+
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <h1 class="h1">SkyEdge</h1>
+                                <h3 class="h3">Unveil Unmatched Elegance</h3>
+                                <p>
+                                    Explore our exclusive eyewear selection for a touch of refined style. Impeccable
+                                    craftsmanship meets crystal-clear vision. Find your perfect pair today!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prev button -->
+        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#banner-carousel" role="button"
+            data-bs-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+        </a>
+
+        <!-- Next button -->
+        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#banner-carousel" role="button"
+            data-bs-slide="next">
+            <i class="fas fa-chevron-right"></i>
+        </a>
+    </div>
+    <!-- Close Banner -->
+
+    <!-- Start Categories of The Month -->
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h2">Categories of The Month</h1>
+                <p>
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/images/category_img.jpg" class="rounded-circle img-fluid border"></a>
+                <h5 class="text-center mt-3 mb-3">Luxury</h5>
+                <p class="text-center"><a href="/shop?category=Luxury&sortMode=0" class="btn btn-success">Go Shop</a>
+                </p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/images/category_img.jpg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Sunglasses</h2>
+                <p class="text-center"><a href="/shop?category=Trending&sortMode=0" class="btn btn-success">Go Shop</a>
+                </p>
+            </div>
+            <div class="col-12 col-md-4 p-5 mt-3">
+                <a href="#"><img src="./assets/images/category_img.jpg" class="rounded-circle img-fluid border"></a>
+                <h2 class="h5 text-center mt-3 mb-3">Accessories</h2>
+                <p class="text-center"><a href="/shop?category=Accessories&sortMode=0" class="btn btn-success">Go
+                        Shop</a></p>
+            </div>
+        </div>
+    </section>
+    <!-- End Categories of The Month -->
+
+    <!-- Start Featured Products -->
+    <section class="bg-light">
+        <div class="container py-5">
+            <div class="row text-center py-3">
+                <div class="col-lg-6 m-auto">
+                    <h1 class="h2">Featured Product</h1>
+                    <p>
+                        Discover sophistication and crystal-clear vision with our exclusive eyewear. Experience elegance
+                        and functionality in every frame. Explore now!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Featured Items -->
+            <div class="row">
+
+                <!-- Item 1 -->
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="product-details.html">
+                            <img src="./assets/images/category_img.jpg" class="card-img-top" alt="...">
+                        </a>
+
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$24.00</li>
+                            </ul>
+
+                            <p class="h3 text-decoration-none text-dark">
+                                Luxury
+                            </p>
+
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt in culpa qui officia
+                                deserunt.
+                            </p>
+                            <p class="text-muted">Reviews (24)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="product-details.html">
+                            <img src="./assets/images/category_img.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-muted fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$48.00</li>
+                            </ul>
+                            <p href="product-details.html" class="h3 text-decoration-none text-dark">
+                                Sunglasses
+                            </p>
+
+                            <p class="card-text">
+                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo
+                                ullamcorper.
+                            </p>
+                            <p class="text-muted">Reviews (48)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="col-12 col-md-4 mb-4">
+                    <div class="card h-100">
+                        <a href="product-details.html">
+                            <img src="./assets/images/category_img.jpg" class="card-img-top" alt="...">
+                        </a>
+                        <div class="card-body">
+                            <ul class="list-unstyled d-flex justify-content-between">
+                                <li>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                    <i class="text-warning fa fa-star"></i>
+                                </li>
+                                <li class="text-muted text-right">$36.00</li>
+                            </ul>
+
+                            <p href="product-details.html" class="h3 text-decoration-none text-dark">
+                                Accessories
+                            </p>
+                            <p class="card-text">
+                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et
+                                scelerisque ipsum lobortis nec.
+                            </p>
+                            <p class="text-muted">Reviews (74)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Close Featured Product -->
+
+    <!-- Start Footer -->
+    <footer class="bg-dark">
+        <div id="footer" class="container" th:replace="~{main/fragments/footer :: footer}"></div>
+
+        <!-- Copyright -->
+        <div id="copyright" class="bg-black copy-right py-3 w-100"
+            th:replace="~{main/fragments/copyright :: copyright}"></div>
+    </footer>
+    <!-- Close Footer -->
+
+    <!-- Scripts -->
+    <script src="./pages/Home/home.js"></script>
+    <script src="./displays/MainDisplay/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

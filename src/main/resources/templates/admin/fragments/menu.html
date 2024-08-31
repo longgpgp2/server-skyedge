@@ -1,0 +1,70 @@
+<nav class="sidebar position-fixed h-100 px-2 py-3" th:fragment="menu">
+    <header class="position-relative">
+        <!-- Logo -->
+        <a role="button" class="image-text d-flex align-items-center mb-2 gap-2 text-decoration-none" href="/admin">
+            <img class="image" th:src="@{/assets/favicon.png}" alt="Logo" width="40" height="40">
+            <span class="text fs-4 color-web-text">SkyEdge</span>
+        </a>
+        <!-- Open&Close menu -->
+        <i class="fa fa-angle-left toggle d-flex align-items-center justify-content-center position-absolute rounded-circle fs-7 top-50"
+            role="button"></i>
+    </header>
+    <!-- Menu -->
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <!-- Menu items -->
+
+                <li role="button" class="list nav-link load-page">
+                    <a href="/admin">
+                        <i class="fas fa-tachometer-alt icon"></i>
+                        <span class="text navtext">Dashboard</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a th:href="@{/admin/product}">
+                        <i class="fas fa-box-open icon"></i>
+                        <span class="text navtext">Product</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a href="/admin/voucher">
+                        <i class="fas fa-ticket icon"></i>
+                        <span class="text navtext">Voucher</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a href="/admin/order">
+                        <i class="fas fa-shopping-cart icon"></i>
+                        <span class="text navtext">Order</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a href="/admin/subscriber">
+                        <i class="fas fa-users icon"></i>
+                        <span class="text navtext">Subscribers</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page" sec:authorize="hasAuthority('SUPERADMIN')">
+                    <a href="/admin/users">
+                        <i class="fas fa-user icon"></i>
+                        <span class="text navtext">Manage Users</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a href="/">
+                        <i class="fas fa-house icon"></i>
+                        <span class="text navtext">Home Page</span>
+                    </a>
+                </li>
+                <li role="button" class="list nav-link load-page">
+                    <a href="/login">
+                        <i class="fas fa-sign-out-alt icon"></i>
+                        <span class="text navtext">Logout</span>
+                    </a>
+                </li>
+                <!-- <div class="indicator"><i class="fas fa-caret-right"></i></div> -->
+            </ul>
+        </div>
+    </div>
+</nav>

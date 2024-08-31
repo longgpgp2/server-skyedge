@@ -1,0 +1,64 @@
+<nav id="header" class="navbar navbar-expand-lg navbar-light shadow" th:fragment="header">
+    <div class="container d-flex justify-content-between align-content-center">
+        <a class="navbar-brand align-self-center logo" href="/">
+            <div class="image-text d-flex align-items-center mb-2 gap-2">
+                <img class="image" th:src="@{/assets/favicon.png}" alt="Logo" width="40" height="40">
+                <span class="text fs-4 color-web-text">SkyEdge</span>
+            </div>
+        </a>
+
+        <!-- Menubar -->
+        <div id="nav-menu"
+            class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between">
+            <div class="flex-fill">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/" aria-current="page">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/shop">Shop</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about-us">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us">Contact</a>
+                    </li>
+
+                    <li sec:authorize="hasAnyAuthority('ADMIN','SUPERADMIN')" class="nav-item">
+                        <a class="nav-link" href="/admin">Admin</a>
+                    </li>
+
+                </ul>
+            </div>
+
+            <!-- Menu Icon -->
+            <div class="navbar align-items-center d-flex">
+                <a class="nav-icon text-decoration-none" href="#">
+                    <i class="fa-solid fa-heart text-dark"></i>
+                </a>
+                <a class="nav-icon text-decoration-none" href="/cart">
+                    <i class="fa-solid fa-cart-shopping text-dark"></i>
+                    <!-- <span class="position-absolute translate-middle badge rounded-pill bg-danger">
+                        0
+                    </span> -->
+                </a>
+                <div id="dropdown" class="dropdown">
+                    <a class="nav-icon d-flex align-items-center text-decoration-none" data-bs-toggle="dropdown"
+                        href="#">
+                        <i class="fa-solid fa-user text-dark"></i>
+                        <span class="dropdown-toggle ms-2"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

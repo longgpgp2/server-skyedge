@@ -1,0 +1,42 @@
+
+.list-voucher{
+    max-height: 600px;
+    overflow-y: scroll;
+}
+.voucher-data {
+    margin-top: 10px;
+}
+
+.voucher-info tr {
+    display: flex;
+}
+.voucher-info th,
+.voucher-info td {
+    flex: 1;
+}
+.voucher-box .buttonGrp{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.voucher-box  .btn-update, .btn-delete{
+    border: none;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    padding: 8px 16px;
+}
+.voucher-data{
+    text-align: start;
+}
+.buttonAddGrp,
+.buttonEditGrp {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
+    justify-content: center;
+    position: relative;
+}
+

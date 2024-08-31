@@ -1,0 +1,32 @@
+.light {
+    color: #6a758a !important;
+}
+
+/* Team Members */
+.intro-box,
+.members {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.modal {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 25% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    text-align: center;
+}
+
+.modalButton {
+    margin: 5px;
+
+}
+

@@ -1,0 +1,22 @@
+.btn-signup {
+  background: #198754;
+  border-radius: 10px;
+}
+
+.log-in-btn{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #3A6F7E;
+}
+.color-web-text{
+  background: linear-gradient(to right, #009c40, #00E577);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body {
+  overflow: hidden;
+}

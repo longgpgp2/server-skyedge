@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+    <div id="content" class="bg-w p-3">
+        <div class="container order-container p-4">
+            <!-- Order management -->
+            <div class="row d-flex align-items-center rounded-3 custom-padding mb-4 bg-white">
+                <!-- Top container -->
+                <div class="col-12 d-flex align-items-center">
+                    <!-- Left management -->
+                    <div class="col-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <i class="fas fa-clipboard-list fa-2x mx-2"></i>
+                            <h2 class="mb-0">Order Management</h2>
+                        </div>
+                        <!-- Filter -->
+                        <!-- <div class="filter_buttons d-flex align-items-center mt-2">
+                            <button class="active btn all-btn d-flex align-items-center gap-2 rounded-0">
+                                <span>All</span>
+                                <span class="all-order rounded-pill fs-065 p-2-5 text-white">400</span>
+                            </button>
+                            <button class="btn new-btn d-flex align-items-center gap-2 rounded-0">
+                                <span>New</span>
+                                <span class="new-order rounded-pill fs-065 p-2-5 text-white">400</span>
+                            </button>
+                            <button class="btn pending-btn d-flex align-items-center gap-2 rounded-0">
+                                <span>Pending</span>
+                                <span class="pending-order rounded-pill fs-065 p-2-5 text-white">400</span>
+                            </button>
+                            <button class="btn delivered-btn d-flex align-items-center gap-2 rounded-0">
+                                <span>Delivered</span>
+                                <span class="delivered-order rounded-pill fs-065 p-2-5 text-white">400</span>
+                            </button>
+                        </div> -->
+                    </div>
+                    <!-- Search -->
+                    <div class="col-8">
+                        <div class="search-box d-flex align-items-center bg-w rounded-3 px-2 py-1 mx-5 mb-3 gap-3">
+                            <i class="fas fa-search icon mx-1"></i>
+                            <input class="bg-w rounded-3 h-4 fs-6 w-100 border-0 outline-none" type="search"
+                                placeholder="Search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- List Order -->
+            <div class="row order-list-box">
+                <div class="order_list rounded-3 p-0" th:each="order: ${orders}">
+                    <div
+                        class="order rounded-3 p-3 bg-white w-100 mb-2 d-flex flex-row justify-content-between align-items-center">
+                        <div>
+                            <!-- Id and Price -->
+                            <div class="d-flex align-items-center mb-2 justify-content-between">
+                                <!-- Checkbox and ID container -->
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex align-items-center gap-1">
+                                        <h5 class="text-secondary mb-0">Order</h5>
+                                        <h5 class="order-id mb-0">#<span class="order-id-value"
+                                                th:text="${order.orderId}"></span></h5>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <h5 class="text-secondary mb-0">Cost: </h5>
+                                        <h5 class="order-id mb-0">$<span class="order-id-value"
+                                                th:text="${order.cost}"></span>
+                                        </h5>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-1">
+                                        <td class="status"><span class="status-btn status-pending"
+                                                th:if="${order.status}==PENDING"
+                                                th:text="${order.status}">PENDING</span>
+                                            <span class="status-btn status-success" th:if="${order.status}==APPROVED"
+                                                th:text="${order.status}">APPROVED</span>
+                                            <span class="status-btn status-failed" th:if="${order.status}==REJECTED"
+                                                th:text="${order.status}">REJECTED</span>
+                                        </td>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Date and Ship -->
+
+                            <div class="d-flex flex-column align-items-start mx-4 mb-2 gap-2">
+                                <!-- Date -->
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-calendar"></i>
+                                    <p class="mb-0 date-text">Date: <span class="time"
+                                            th:text="${order.date}">order.time</span></p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-phone"></i>
+                                    <p class="mb-0 date-text">Phone: <span class="time"
+                                            th:text="${order.phone}">order.time</span></p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-user"></i>
+                                    <p class="mb-0 date-text">Customer: <span class="time"
+                                            th:text="${order.customerName}">order.time</span></p>
+                                </div>
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="fa fa-envelope"></i>
+                                    <p class="mb-0 date-text">Email: <span class="time"
+                                            th:text="${order.email}">order.time</span></p>
+                                </div>
+                                <!-- Shipping No
+                                <div class="d-flex align-items-center gap-1">
+                                    <p class="mb-0 shipping-no-text">Shipping no: <span
+                                            class="shipping-no text-primary">order.number</span></p>
+                                </div> -->
+                            </div>
+
+
+
+                        </div>
+                        <div class="d-flex flex-column gap-1">
+                            <a th:href="@{/admin/order/order-details(id=${order.orderId})}"
+                                class="viewDetails btn btn-outline-primary rounded-pill fs-075 px-3 py-2">View
+                                details</a>
+                            <a th:href="@{/admin/order/approve(id=${order.orderId})}"
+                                class="viewDetails btn btn-outline-success rounded-pill fs-075 px-3 py-2">Approve</a>
+                            <a th:href="@{/admin/order/reject(id=${order.orderId})}"
+                                class="viewDetails btn btn-outline-danger rounded-pill fs-075 px-3 py-2">Reject</a>
+                        </div>
+                        <!-- Status -->
+                        <!-- <div class="custom-select mx-4 mb-3">
+                            <select class="status-select rounded-pill p-2-5 text-success"></select>
+                        </div> -->
+                        <!-- Items -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>

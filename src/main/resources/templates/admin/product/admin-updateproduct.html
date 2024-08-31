@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{admin/fragments/head :: head}"></head>
+
+<body>
+    <nav th:replace="~{admin/fragments/menu :: menu}"></nav>
+
+    <div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+
+    <div id="content" class="bg-w p-3">
+        <!-- Form -->
+        <div class="container bg-white p-4 rounded-3">
+            <form enctype="multipart/form-data" th:object="${productDto}" method="post"
+                class="col d-flex align-items-center bg-w rounded-3">
+                <!-- Left content -->
+                <div class="row p-4">
+                    <h2 class="col-12 fw-bold color-edit-text">Edit Product <span th:text="'#' + ${product.id}"></span>
+                    </h2>
+                    <div class="col-6 left-content p-4">
+                        <!-- Product Images -->
+                        <div class="product-data">
+                            <label>Product Images:</label>
+                            <div>
+                                <img class="rounded-3" th:src="@{'/images/' + ${product.imageFileName}}" width="120"
+                                    height="120">
+                            </div>
+                            <div>
+                                <input type="file" class="form-control" name="imageFile" accept="image/*"
+                                    th:field="${productDto.imageFile}">
+                            </div>
+                        </div>
+                        <input readonly type="hidden" th:value="${product.id}" />
+                        <!-- Product Name -->
+                        <div class="product-data">
+                            <label for="productName">Product name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter product name" required
+                                th:field="*{name}">
+                        </div>
+
+                        <!-- Product Description -->
+                        <div class="product-data">
+                            <label for="description">Product description:</label>
+                            <textarea class="form-control" id="description" placeholder="Enter product description"
+                                required th:field="*{description}" rows="4"></textarea>
+                        </div>
+
+                        <!-- Country of Manufacturer -->
+                        <div class="product-data">
+                            <label for="country">Country of manufacturer:</label>
+                            <input type="text" class="form-control" id="country"
+                                placeholder="Enter country of manufacturer" required th:field="*{country}">
+                        </div>
+
+                        <!-- Manufacturer & Importer -->
+                        <div class="product-data">
+                            <label for="manufacturer">Manufacturer & Importer:</label>
+                            <input type="text" class="form-control" id="manufacturer"
+                                placeholder="Enter manufacturer & importer" required th:field="*{manufacturer}">
+                        </div>
+                    </div>
+
+                    <!-- Right content -->
+                    <div class="col-6 right-content p-4">
+                        <!-- Category -->
+                        <div class="product-data">
+                            <label for="category">Category:</label>
+                            <div>
+                                <select class="form-select mt-2" id="category" required th:field="*{category}">
+                                    <option value="Luxury">Luxury</option>
+                                    <option value="Trending">Trending</option>
+                                    <option value="Men's glasses">Men's glasses</option>
+                                    <option value="Women's glasses">Women's glasses</option>
+                                    <option value="Sunglasses">Sunglasses</option>
+                                    <option value="Accessories">Accessories</option>
+                                    <option value="Eyeglass Frames">Eyeglass Frames</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Base pricing -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="price">Base pricing:</label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="price"
+                                    placeholder="Enter base pricing" required th:field="*{price}">
+                            </div>
+
+                            <!-- Discount -->
+                            <div>
+                                <label for="discount">Discount:</label>
+                                <input type="text" class="form-control" id="discount"
+                                    placeholder="Enter discount for this product" required th:field="*{discount}">>
+                            </div>
+                        </div>
+
+                        <!-- Frame -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="frameFront">Frame Front:</label>
+                                <input type="text" class="form-control" id="frameFront" placeholder="Enter frame front"
+                                    required th:field="*{front}">
+                            </div>
+                            <div>
+                                <label for="frameSide">Frame Side:</label>
+                                <input type="text" class="form-control" id="frameSide" placeholder="Enter frame side"
+                                    required th:field="*{side}">
+                            </div>
+                        </div>
+
+                        <!-- Lens -->
+                        <div class="product-data specifications">
+                            <div>
+                                <label for="lensWidth">Lens Width:</label>
+                                <input type="text" class="form-control" id="lensWidth" placeholder="Enter lens width"
+                                    required th:field="*{width}">
+                            </div>
+                            <div>
+                                <label for="lensHeight">Lens Height:</label>
+                                <input type="text" class="form-control" id="lensHeight" placeholder="Enter lens height"
+                                    required th:field="*{height}">
+                            </div>
+                        </div>
+
+                        <!-- Stock -->
+                        <div class="product-data">
+                            <label for="stock">Stock:</label>
+                            <input type="text" class="form-control" id="stock" placeholder="Enter product stock"
+                                required th:field="*{stock}">
+                        </div>
+
+                        <!-- Update & Delete buttons -->
+                        <div class="buttonGrp">
+                            <button type="submit" class="btn btn-outline-primary" th:href="@{/admin/product}">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                <span>Update</span>
+                            </button>
+                            <a class="btn btn-outline-secondary text-decoration-none" th:href="@{/admin/product}">
+                                <i class="fa-regular fa-trash-can"></i>
+                                <span>Cancel</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script th:replace="~{admin/fragments/script :: script}"></script>
+</body>
+
+</html>
